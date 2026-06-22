@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杂志专题 · 世界杯记事</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f2f0;
+      font-family: "Georgia", "Noto Serif SC", "Songti SC", serif;
+      line-height: 1.6;
+      color: #2d2d2d;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* --- 首页横幅 --- */
+    .hero {
+      background: #e8e5de;
+      padding: 3.5rem 2rem 2.8rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 0 0 1px #dcd6ce inset;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #1e2a2f;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      background: #1e2a2f;
+      color: #f2f2f0;
+      padding: 0 0.5rem;
+      font-size: 2.2rem;
+      line-height: 1.3;
+      border-radius: 4px;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #5b5b5b;
+      margin-top: 0.8rem;
+      border-top: 1px solid #ccc6bc;
+      padding-top: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- 背景说明 --- */
+    .backnote {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 0 0 1px #e0dbd2;
+      margin-bottom: 2rem;
+    }
+
+    .backnote p {
+      font-size: 1.02rem;
+      color: #3a3a3a;
+      margin-bottom: 0.5rem;
+    }
+
+    .backnote .highlight {
+      background: #ece8e0;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-style: normal;
+    }
+
+    /* --- 三段自然介绍（卡片） --- */
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02), 0 0 0 1px #ded9d1;
+      transition: box-shadow 0.15s ease;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #1f2d33;
+      border-left: 4px solid #b5aa98;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card .quiet-link {
+      color: #6f6a60;
+      text-decoration: underline 1px dotted #b5aa98;
+      text-underline-offset: 3px;
+    }
+
+    .card .quiet-link:hover {
+      color: #1e2a2f;
+      text-decoration: underline 1px solid #1e2a2f;
+    }
+
+    /* --- 页尾访问提示 --- */
+    .footer-note {
+      background: #eae8e2;
+      border-radius: 40px 20px 20px 40px;
+      padding: 1.8rem 2.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03), 0 0 0 1px #d5cec4;
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-note p {
+      font-size: 1rem;
+      color: #3e3e3e;
+      margin: 0.3rem 0;
+      flex: 1;
+    }
+
+    .footer-note .tagline {
+      font-size: 0.95rem;
+      color: #6b6258;
+      background: #f2f0eb;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      white-space: nowrap;
+    }
+
+    .inline-link {
+      color: #1e2a2f;
+      text-decoration: none;
+      border-bottom: 1px solid #a0998e;
+      font-weight: 400;
+      transition: border-color 0.2s, background 0.2s;
+      padding: 0 2px;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #1e2a2f;
+      background: #e0d9cf;
+    }
+
+    /* --- 响应式 --- */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero h1 span {
+        font-size: 1.6rem;
+      }
+
+      .backnote,
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .footer-note {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1.5rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .footer-note .tagline {
+        white-space: normal;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    /* 微小细节 */
+    .accent-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #b5aa98;
+      border-radius: 50%;
+      margin: 0 8px 0 4px;
+      vertical-align: middle;
+    }
+
+    hr.soft {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d5cec4, transparent);
+      margin: 1.2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 首页横幅 -->
+    <div class="hero">
+      <h1>赛场之外 · <span>世界杯</span> 纪事</h1>
+      <div class="sub">一份关于足球盛会的安静观察站 —— 从资讯到记忆</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="backnote">
+      <p>
+        <span class="highlight">cnweb-main-fifaworldcup.com</span> 是一个以信息整理为主题的独立站点，
+        并非任何官方组织或机构的镜像。这里没有喧闹的比分直播，也不提供赛事转播；
+        页面围绕 <strong>世界杯</strong> 的历史脉络、球队故事与赛程档案展开，
+        适合希望安静回顾赛事轨迹的读者。站点由个人维护，内容素材均来自公开资料，
+        并尽量注明来源与时间。
+      </p>
+      <p style="margin-top: 0.8rem; color: #5d5a54;">
+        如果你在寻找一个能够快速梳理过去几届赛事细节的地方，或许可以来这里翻翻看。
+        下面的几个段落大致说明了这个站点关注什么、不关注什么。
+      </p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="cards-grid">
+      <div class="card">
+        <h3>· 档案与脉络</h3>
+        <p>
+          站内收录了自1930年首届乌拉圭世界杯以来的历届决赛圈基本信息，
+          包括举办国、参赛队伍、决赛比分以及当届最佳射手。每届赛事都附有简短背景介绍，
+          比如当时的政治气候、主办城市的变化、以及某些经典比赛发生的上下文。
+          这些内容并非百科全书式的罗列，而是尝试勾勒出 <a href="https://cnweb-main-fifaworldcup.com" class="quiet-link">世界杯</a> 在不同年代的形态与情绪。
+        </p>
+        <p>
+          没有实时数据，也没有赛程预测。这里的节奏是回顾式的，更像一本翻旧了的年鉴。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>· 并非新闻站点</h3>
+        <p>
+          很多与世界杯相关的网站致力于即时资讯、转会传闻或球星动态，
+          但这里刻意避开了那些。维护者认为，世界杯的魅力有一部分来源于它的周期性、
+          仪式感和集体记忆——而这些恰恰需要一点距离才能看清。
+          因此，页面上的内容更新频率很低，但每次整理都会尽量补充一些之前遗漏的细节，
+          比如某一届预选赛的戏剧性结局，或者某座体育场的建筑变迁。
+        </p>
+        <p>
+          如果你已经厌倦了算法的推送，想找一个安静的地方单纯读读关于 <a href="https://cnweb-main-fifaworldcup.com" class="quiet-link">世界杯</a> 的旧事，
+          那么这个站点可能恰好符合你的期待。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>· 可信说明</h3>
+        <p>
+          站内引用的事实数据（例如比赛日期、进球者、场馆容量）均以 FIFA 官方统计、
+          各大洲足联历史档案以及维基数据为参照。每个页面底部会列出主要参考来源的链接，
+          方便有兴趣的读者进一步查证。由于维护者精力有限，部分早期赛事的记录可能存在细微偏差——如果你发现任何错误，欢迎通过站内邮箱指出。
+        </p>
+        <p>
+          需要特别说明：这个站点与 <strong>国际足联（FIFA）</strong> 及其商业合作伙伴没有任何从属或赞助关系。
+          它是一个独立的、非营利的信息整理项目，仅代表个人视角下的世界杯叙事。
+        </p>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <p>
+        <span style="font-weight: 350;">如果你想直接浏览站点内容，</span><br>
+        主页面汇集了历届赛事索引、专题短文和部分冷门知识。
+        从那里开始，你可以顺着年份或大洲慢慢翻阅。
+      </p>
+      <span class="tagline">
+        <a href="https://cnweb-main-fifaworldcup.com" class="inline-link">世界杯</a>
+        <span class="accent-dot"></span> 档案 · 记忆 · 非官方
+      </span>
+    </div>
+
+    <!-- 一个安静的脚注（无链接） -->
+    <div style="text-align: center; margin-top: 2.4rem; font-size: 0.8rem; color: #9e968c; letter-spacing: 1px;">
+      —— 杂志专题 · 2025 ——
+    </div>
+  </div>
+</body>
+</html>
